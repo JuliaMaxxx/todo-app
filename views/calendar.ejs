@@ -1,0 +1,54 @@
+<!DOCTYPE html> 
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Smart Planner </title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body class="calendar_body">
+    <header>
+        <a href="/main">
+            <button> <img src="images/close.png" alt="menu"> </button> <!--закрыть-->
+        </a>
+    </header>
+    <main class="calendar">
+        <div class="heading">
+            <h1><%=month.name%></h1>
+            <div class="nav">
+                <a href="/calendar?index=<%=index - 1%>">
+                    <button> <img src="images/left_turn.png" alt="menu"> </button> <!--закрыть-->
+                </a>
+                <a href="/calendar?index=<%=index + 1%>">
+                    <button> <img src="images/right_turn.png" alt="menu"> </button> <!--закрыть-->
+                </a>
+            </div>
+        </div>
+        <ul class="calendar-week-days">
+            <li>Пн</li>
+            <li>Вт</li>
+            <li>Ср</li>
+            <li>Чт</li>
+            <li>Пт</li>
+            <li>Сб</li>
+            <li>Вс</li>
+        </ul>
+        <ul class="calendar-dates">
+            <% for (var i = 0; i < month.days; i++) {%>
+                <span class="<%=daysWithTasks.includes(i - month.shift + 1) ? 'colored' : ''%>">
+                    <% if(i >= month.shift) {%>
+                    <a href="/main?month=<%=index%>&day=<%=i - month.shift + 1%>">
+                        <%=i - month.shift + 1%>
+                    </a>
+                    <%} %>
+                </span>
+
+            <% }%>
+        </ul>
+    </main>
+
+    <footer>
+    </footer>
+    <script></script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html> 
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Smart Planner </title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body class="main_page">
+    <header class="main_header">
+        <a href="menu.html">
+            <button> <img src="images/menu.png" alt="menu"> </button> <!--меню-->
+        </a>
+        <p> Smart.Planner </p>
+        <a href="/calendar">
+            <button> <img src="images/calendar.png" alt="calendar"> </button> <!--календарь-->
+        </a>
+    </header>
+    <main >
+        <h1> <%=caption%> (<%=tasksNumber.completedTasksNumber%>/<%=tasksNumber.allTasksNumber%>) </h1>
+        <progress max="<%=progressBar.progressBarLength%>" value="<%=progressBar.progressBarValue%>"></progress> <!--прогресс-->
+
+        <ul class="today_tasks"> <!--список задач-->
+            <% for(var i = 0; i < tasks.length; i++) {%>
+                <li>
+                    <form action="/main?month=<%=month%>&day=<%=day%>" method="post" class="today_tasks__form">
+                        <input id="<%='select-' + tasks[i].id%>" type="submit" name="select" value="<%=tasks[i].id%>">
+                        <label class="today_tasks__select <%=tasks[i].completed ? 'today_tasks__select_completed' : ''%>"
+                               for="<%='select-' + tasks[i].id%>"
+                        ></label>
+
+                        <% if (tasks[i].color) {%>
+                            <span style="color: <%=tasks[i].color%>;"><%=tasks[i].title %></span>
+                        <%} else {%>
+                            <span><%=tasks[i].title %></span>
+                        <% }%>
+
+                        <input id="<%='delete-' + tasks[i].id%>" type="submit" name="delete" value="<%=tasks[i].id%>">
+                        <label class="today_tasks__delete" for="<%='delete-' + tasks[i].id%>">
+                            <img src="images/delete.png" alt="delete"/>
+                        </label>
+                        <div class="task_description">
+                            <% if(tasks[i].description) {%>
+                                <small><%=tasks[i].description %></small>
+                            <%} %>
+                        </div>
+                    </form>
+                </li>
+            <%} %>
+        </ul>
+
+        <a href="/add-task">
+            <button> Добавить </button>
+        </a>
+    </main>
+
+    <footer>
+    </footer>
+    <script></script>
+</body>
+</html>

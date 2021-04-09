@@ -1,0 +1,27 @@
+[
+  {
+    "name": "January",
+    "shift": 2,
+    "days": 31
+  },
+  {
+    "name": "February",
+    "shift": 1,
+    "days": 28
+  },
+  {
+    "name": "March",
+    "shift": 0,
+    "days": 31
+  },
+  {
+    "name": "April",
+    "shift": 3,
+    "days": 30
+  },
+  {
+    "name": "May",
+    "shift": 4,
+    "days": 30
+  }
+]
